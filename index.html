@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Paralegal Services: Demand Letters, MedChron, and NotebookLM Enablement</title>
-    <meta name="description" content="On-demand paralegal specializing in demand letters, MedChron generation, and integrating NotebookLM to streamline legal workflows." />
+    <meta name="description" content="On-demand paralegal specializing in demand letters, medical chronology, and integrating NotebookLM to streamline legal workflows." />
 
     <!-- Open Graph -->
     <meta property="og:title" content="Paralegal Services: Demand Letters, MedChron, and NotebookLM" />
@@ -44,17 +44,19 @@
     }
     </script>
 
-    <!-- Analytics (replace GA_MEASUREMENT_ID) -->
+    <!-- Analytics temporarily removed to reduce antivirus false positives -->
+    <!-- Uncomment when ready to deploy:
     <script>
       window.GA_MEASUREMENT_ID = "G-XXXXXXXXXX";
     </script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);} // eslint-disable-line
+      function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', window.GA_MEASUREMENT_ID);
     </script>
+    -->
 </head>
 <body>
     <header class="site-header">
@@ -183,15 +185,15 @@
                 <h2 class="section-title">What clients say</h2>
                 <div class="grid quotes">
                     <blockquote class="quote">
-                        “Clear, thorough medchron that saved our team hours.”
+                        "Clear, thorough medchron that saved our team hours."
                         <cite>— Managing Partner, PI Firm</cite>
                     </blockquote>
                     <blockquote class="quote">
-                        “Demand letter structure was on point and persuasive.”
+                        "Demand letter structure was on point and persuasive."
                         <cite>— Claims Counsel</cite>
                     </blockquote>
                     <blockquote class="quote">
-                        “Our staff finally uses AI with confidence thanks to her NotebookLM training.”
+                        "Our staff finally uses AI with confidence thanks to her NotebookLM training."
                         <cite>— Operations Director</cite>
                     </blockquote>
                 </div>
@@ -226,8 +228,8 @@
             <div class="container contact-grid">
                 <div>
                     <h2 class="section-title">Contact and booking</h2>
-                    <p>Tell me briefly about your matter and preferred timeline. I’ll reply within one business day.</p>
-                    <form class="contact-form" action="https://formspree.io/f/your-form-id" method="POST">
+                    <p>Tell me briefly about your matter and preferred timeline. I'll reply within one business day.</p>
+                    <form class="contact-form" id="contactForm">
                         <div class="form-row">
                             <label for="name">Name</label>
                             <input id="name" name="name" type="text" placeholder="Your name" required />
@@ -242,14 +244,15 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Send message</button>
                         <p class="form-note">By submitting, you consent to be contacted about your request.</p>
+                        <div id="formMessage" style="display: none; margin-top: 1rem; padding: 1rem; border-radius: 4px;"></div>
                     </form>
                 </div>
                 <div>
                     <div class="booking">
                         <h3>Book a consultation</h3>
                         <p>Pick a time that works for you.</p>
-                        <!-- Calendly inline widget placeholder -->
-                        <div class="calendly-inline-widget" data-url="https://calendly.com/your-calendly-handle/intro-call" style="min-width:320px;height:620px;"></div>
+                        <!-- Calendly inline widget -->
+                        <div class="calendly-inline-widget" data-url="https://calendly.com/nextplayresults/30min" style="min-width:320px;height:620px;"></div>
                         <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
                     </div>
                 </div>
