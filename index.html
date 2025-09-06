@@ -51,7 +51,6 @@
             <div class="header-inner">
                 <div class="logo-section">
                     <img src="assets/nextplay-logo.png" alt="NextPlay Results" class="logo-img" />
-                    <div class="logo-text">NextPlay Results</div>
                 </div>
                 <nav class="nav">
                     <button onclick="scrollToId('services')" class="nav-link">Services</button>
@@ -130,9 +129,9 @@
                         <div class="impact-progress">
                             <div class="impact-title">Youth Sports Impact</div>
                             <div class="progress-bar">
-                                <div class="progress-fill" style="width: 62.5%"></div>
+                                <div class="progress-fill" style="width: 2.5%"></div>
                             </div>
-                            <div class="progress-text">$12,500 raised of $20,000 goal</div>
+                            <div class="progress-text">$500 raised of $20,000 goal</div>
                         </div>
                     </div>
                 </div>
@@ -211,7 +210,7 @@
             </div>
             <div class="founder-grid">
                 <div class="founder-image">
-                    <div class="image-placeholder">Founder Photo</div>
+                    <img src="assets/jessica-djenane.jpg" alt="Jessica Djenane - Founder" class="founder-photo" />
                 </div>
                 <div class="founder-content">
                     <blockquote class="founder-quote">
@@ -232,8 +231,8 @@
                         </div>
                     </div>
                     <div class="founder-buttons">
-                        <button onclick="window.open('#', '_blank')" class="btn btn-outline">
-                            <span class="icon">💼</span> Connect on LinkedIn
+                        <button onclick="window.open('https://www.linkedin.com/in/jessdjenane/', '_blank')" class="btn btn-linkedin">
+                            Connect on LinkedIn
                         </button>
                         <button onclick="scrollToId('contact')" class="btn btn-primary">
                             <span class="icon">✉</span> Contact
@@ -250,15 +249,15 @@
             <div class="section-header">
                 <div class="section-eyebrow">Community</div>
                 <h2 class="section-title">Youth Sports Impact</h2>
-                <p class="section-subtitle">10% of earnings support youth sports—baked into our model.</p>
+                <p class="section-subtitle">10% of earnings support youth sports baked into our model.</p>
             </div>
             <div class="impact-grid">
                 <div class="impact-progress-card">
                     <div class="progress-label">Donation Progress</div>
                     <div class="progress-bar-large">
-                        <div class="progress-fill" style="width: 62.5%"></div>
+                        <div class="progress-fill" style="width: 2.5%"></div>
                     </div>
-                    <div class="progress-stats"><strong>$12,500</strong> raised · Goal $20,000</div>
+                    <div class="progress-stats"><strong>$500</strong> raised · Goal $20,000</div>
                     <p class="progress-description">
                         Your matters fuel local teams. From equipment to league fees, every engagement helps more kids get on the field.
                     </p>
@@ -281,26 +280,26 @@
             <div class="section-header">
                 <div class="section-eyebrow">Stay Connected</div>
                 <h2 class="section-title">Get the Legal Support Playbook</h2>
-                <p class="section-subtitle">Subscribe for a free checklist: 5 Mistakes Attorneys Make in Demand Letters—plus updates.</p>
+                <p class="section-subtitle">Subscribe for a free checklist: 5 Mistakes Attorneys Make in Demand Letters - plus updates.</p>
             </div>
             <div class="contact-grid">
                 <div class="newsletter-card">
-                    <div class="form-grid">
-                        <input type="text" placeholder="First name" class="form-input">
-                        <input type="text" placeholder="Last name" class="form-input">
-                    </div>
-                    <input type="email" placeholder="Work email" class="form-input full-width">
-                    <input type="text" placeholder="Firm / Organization" class="form-input full-width">
-                    <button onclick="alert('Thanks! We\'ll email the checklist.')" class="btn btn-primary full-width">Get the PDF</button>
-                    <p class="form-note">We'll occasionally send updates. Unsubscribe anytime.</p>
+                    <form id="newsletter-form">
+                        <div class="form-grid">
+                            <input type="text" placeholder="First name" class="form-input" id="firstName" required>
+                            <input type="text" placeholder="Last name" class="form-input" id="lastName" required>
+                        </div>
+                        <input type="email" placeholder="Work email" class="form-input full-width" id="email" required>
+                        <input type="text" placeholder="Firm / Organization" class="form-input full-width" id="organization" required>
+                        <button type="button" onclick="validateNewsletterForm()" class="btn btn-primary full-width">Get the PDF</button>
+                        <p class="form-note">We'll occasionally send updates. Unsubscribe anytime.</p>
+                    </form>
                 </div>
                 <div class="contact-card">
                     <h3 class="contact-title">Talk to Our Team</h3>
                     <input type="text" placeholder="Your message subject" class="form-input full-width">
                     <input type="text" placeholder="Best contact (email or phone)" class="form-input full-width">
                     <button onclick="alert('Thanks! We\'ll reach out shortly.')" class="btn btn-outline full-width">Request a Callback</button>
-                    <p class="contact-note">Looking for a quick fit check? Take the 30‑second quiz to get routed to the right service.</p>
-                    <button onclick="alert('Quiz placeholder — route users based on answers.')" class="btn btn-ghost full-width">Take the Quick Quiz</button>
                 </div>
             </div>
         </div>
