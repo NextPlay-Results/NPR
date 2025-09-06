@@ -95,6 +95,31 @@ function handleFormSubmit(event) {
     alert('Thanks! We\'ll be in touch soon.');
 }
 
+// Newsletter form validation
+function validateNewsletterForm() {
+    const firstName = document.getElementById('firstName').value.trim();
+    const lastName = document.getElementById('lastName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const organization = document.getElementById('organization').value.trim();
+    
+    // Check if all fields are filled
+    if (!firstName || !lastName || !email || !organization) {
+        alert('Please fill in all fields to get the PDF.');
+        return false;
+    }
+    
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        alert('Please enter a valid email address.');
+        return false;
+    }
+    
+    // If validation passes
+    alert('Thanks! We\'ll email the checklist to ' + email);
+    return true;
+}
+
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Start rotating text
@@ -159,33 +184,39 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Mobile menu toggle (if needed in future)
+// Mobile menu toggle (updated version)
 function toggleMobileMenu() {
     const nav = document.querySelector('.nav');
     if (nav) {
         nav.classList.toggle('mobile-open');
+        
+        // Prevent body scroll when menu is open
+        if (nav.classList.contains('mobile-open')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
     }
 }
 
-// Add mobile menu button if needed
-function addMobileMenuButton() {
-    const headerInner = document.querySelector('.header-inner');
-    if (headerInner && window.innerWidth < 768) {
-        const mobileMenuButton = document.createElement('button');
-        mobileMenuButton.className = 'mobile-menu-toggle';
-        mobileMenuButton.innerHTML = '☰';
-        mobileMenuButton.onclick = toggleMobileMenu;
-        headerInner.appendChild(mobileMenuButton);
+// Close mobile menu when a nav link is clicked
+function scrollToId(id) {
+    const el = document.getElementById(id);
+    if (el) {
+        // Close mobile menu first
+        const nav = document.querySelector('.nav');
+        if (nav && nav.classList.contains('mobile-open')) {
+            nav.classList.remove('mobile-open');
+            document.body.style.overflow = '';
+        }
+        
+        // Then scroll to section
+        el.scrollIntoView({ 
+            behavior: "smooth", 
+            block: "start" 
+        });
     }
 }
-
-// Handle window resize
-window.addEventListener('resize', function() {
-    // Add mobile menu button on small screens
-    if (window.innerWidth < 768) {
-        addMobileMenuButton();
-    }
-});
 
 // Initialize mobile menu on load
-window.addEventListener('load', addMobileMenuButton);
+//window.addEventListener('load', addMobileMenuButton);
