@@ -55,6 +55,28 @@ body {
     letter-spacing: -0.025em;
     color: #0f172a;
 }
+/* Mobile Menu Toggle Button */
+.mobile-menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #0f172a;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+
+.mobile-menu-toggle:hover {
+    background-color: #f1f5f9;
+}
+
+@media (min-width: 768px) {
+    .mobile-menu-toggle {
+        display: none;
+    }
+}
 
 .nav {
     display: none;
@@ -80,7 +102,27 @@ body {
         display: flex;
     }
 }
+/* Mobile Navigation Overlay */
+.nav.mobile-open {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: white;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    z-index: 1000;
+}
 
+.nav.mobile-open .nav-link {
+    font-size: 18px;
+    padding: 16px;
+    color: #0f172a;
+}
 /* Hero Section */
 .hero {
     position: relative;
@@ -827,29 +869,61 @@ body {
 
 /* Responsive Design */
 @media (max-width: 767px) {
+    /* Container and spacing adjustments */
+    .container {
+        padding: 0 16px;
+    }
+    
+    .hero {
+        padding: 60px 0 48px;
+    }
+    
+    .section {
+        padding: 48px 0;
+    }
+    
     .hero-title {
-        font-size: 2rem;
+        font-size: 1.75rem;
+        line-height: 1.2;
     }
     
     .section-title {
-        font-size: 1.875rem;
+        font-size: 1.5rem;
+        line-height: 1.3;
     }
     
-    .hero-buttons {
-        flex-direction: column;
+    .hero-description {
+        font-size: 16px;
     }
     
-    .service-buttons {
-        flex-direction: column;
+    .founder-quote {
+        font-size: 16px;
     }
     
-    .founder-buttons {
-        flex-direction: column;
+    /* Button improvements */
+    .btn {
+        padding: 14px 20px;
+        font-size: 16px;
+        min-height: 44px;
+    }
+/* Extra small screens */
+@media (max-width: 480px) {
+    .form-grid {
+        grid-template-columns: 1fr;
     }
     
-    .trust-points {
-        flex-direction: column;
-        align-items: flex-start;
+    .snapshot-grid {
+        grid-template-columns: 1fr;
         gap: 8px;
+    }
+    
+    .pills,
+    .trust-points {
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .hero-title {
+        font-size: 1.5rem;
     }
 }
