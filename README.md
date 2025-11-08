@@ -6,7 +6,7 @@ A professional paralegal services website featuring demand letter drafting, medi
 
 - **Modern Design**: Clean, professional layout with responsive design
 - **Service Showcase**: Three main service pillars with interactive samples
-- **Founder Profile**: Jessica Djenane's background and expertise
+- **Expertise Showcase**: 20 years of paralegal experience and credentials
 - **Community Impact**: Youth sports donation tracking
 - **Contact Forms**: Newsletter signup and consultation requests
 
