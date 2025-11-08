@@ -11,10 +11,12 @@ function scrollToId(id) {
 
 // Rotating text functionality
 const phrases = [
-    "Faster Demand Letters",
-    "Smarter MedChron", 
-    "AI-Powered Solutions",
-    "Operational Excellence"
+    "Trial-Tested Precision",
+    "20 Years Experience",
+    "1,000+ Demand Letters",
+    "Battle-Tested Expertise",
+    "50-State Research",
+    "Zero AI Hallucinations"
 ];
 
 let currentPhraseIndex = 0;
@@ -220,3 +222,42 @@ function scrollToId(id) {
 
 // Initialize mobile menu on load
 //window.addEventListener('load', addMobileMenuButton);
+
+// Animated counter for stats
+function animateCounter(element, target, duration = 2000) {
+    const start = 0;
+    const increment = target / (duration / 16); // 60fps
+    let current = start;
+
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            element.textContent = target;
+            clearInterval(timer);
+        } else {
+            element.textContent = Math.floor(current);
+        }
+    }, 16);
+}
+
+// Observe stats section and trigger animation when visible
+const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+            entry.target.classList.add('animated');
+            const statNumbers = entry.target.querySelectorAll('.stat-number');
+            statNumbers.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-target'));
+                animateCounter(stat, target);
+            });
+        }
+    });
+}, { threshold: 0.3 });
+
+// Observe stats section when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    const statsSection = document.querySelector('.stats-section');
+    if (statsSection) {
+        statsObserver.observe(statsSection);
+    }
+});
