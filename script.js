@@ -11,12 +11,12 @@ function scrollToId(id) {
 
 // Rotating text functionality
 const phrases = [
-    "Trial-Tested Precision",
-    "20 Years Experience",
-    "1,000+ Demand Letters",
-    "Battle-Tested Expertise",
-    "50-State Research",
-    "Zero AI Hallucinations"
+    "Done Right, Done Fast",
+    "20 Years in PI Law",
+    "1,000+ Demand Letters Written",
+    "Trial-Ready Work Product",
+    "All 50 States Covered",
+    "No AI, Just Experience"
 ];
 
 let currentPhraseIndex = 0;
