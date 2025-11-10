@@ -383,9 +383,9 @@
                 </div>
                 <div class="contact-card">
                     <h3 class="contact-title">Talk to Our Team</h3>
-                    <input type="text" placeholder="Your message subject" class="form-input full-width">
-                    <input type="text" placeholder="Best contact (email or phone)" class="form-input full-width">
-                    <button onclick="alert('Thanks! We\'ll reach out shortly.')" class="btn btn-outline full-width">Request a Callback</button>
+                    <input type="text" placeholder="Your message subject" class="form-input full-width" id="callbackSubject" required>
+                    <input type="text" placeholder="Best contact (email or phone)" class="form-input full-width" id="callbackContact" required>
+                    <button onclick="validateCallbackForm()" class="btn btn-outline full-width">Request a Callback</button>
                 </div>
             </div>
         </div>
@@ -420,6 +420,14 @@
                 <button onclick="closeModal()" class="btn btn-outline">Close</button>
                 <button onclick="closeModal(); scrollToId('contact')" class="btn btn-primary">Talk to Us</button>
             </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="notification" class="notification">
+        <div class="notification-content">
+            <span class="notification-icon">✓</span>
+            <span id="notification-message" class="notification-message"></span>
         </div>
     </div>
 

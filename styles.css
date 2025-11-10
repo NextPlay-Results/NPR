@@ -1053,6 +1053,52 @@ body {
     color: #0f172a;
 }
 
+/* Notification Toast */
+.notification {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 2000;
+    transform: translateX(400px);
+    transition: transform 0.3s ease;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+.notification-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 24px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    border: 1px solid #0d9488;
+    min-width: 300px;
+}
+
+.notification-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0d9488, #0891b2);
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.notification-message {
+    color: #0f172a;
+    font-size: 14px;
+    font-weight: 500;
+}
+
 /* Modal */
 .modal {
     display: none;
