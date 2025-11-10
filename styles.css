@@ -294,46 +294,26 @@ body {
     cursor: pointer;
     border: none;
     text-decoration: none;
-    position: relative;
-}
-
-.btn > * {
-    position: relative;
-    z-index: 1;
 }
 
 .btn-primary {
     background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
     color: white;
     box-shadow: 0 2px 8px rgba(15, 23, 42, 0.2);
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-primary::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #1e293b, #334155);
-    transition: left 0.3s ease;
-    z-index: 0;
+    transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
     box-shadow: 0 4px 16px rgba(15, 23, 42, 0.3);
     transform: translateY(-1px);
-}
-
-.btn-primary:hover::before {
-    left: 0;
+    color: white;
 }
 
 .btn-primary .arrow {
     display: inline-block;
     transition: transform 0.3s ease;
+    margin-left: 4px;
 }
 
 .btn-primary:hover .arrow {
@@ -344,31 +324,15 @@ body {
     border: 1px solid #cbd5e1;
     background: white;
     color: #0f172a;
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-outline::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #f0fdfa, #ecfeff);
-    transition: left 0.3s ease;
-    z-index: 0;
+    transition: all 0.3s ease;
 }
 
 .btn-outline:hover {
     border-color: #0d9488;
     color: #0d9488;
+    background: linear-gradient(135deg, #f0fdfa, #ecfeff);
     box-shadow: 0 2px 8px rgba(13, 148, 136, 0.15);
     transform: translateY(-1px);
-}
-
-.btn-outline:hover::before {
-    left: 0;
 }
 
 .btn-ghost {
