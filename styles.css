@@ -307,11 +307,13 @@ body {
     background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
     box-shadow: 0 4px 16px rgba(15, 23, 42, 0.3);
     transform: translateY(-1px);
+    color: white;
 }
 
 .btn-primary .arrow {
     display: inline-block;
     transition: transform 0.3s ease;
+    margin-left: 4px;
 }
 
 .btn-primary:hover .arrow {
