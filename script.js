@@ -97,28 +97,65 @@ function handleFormSubmit(event) {
     alert('Thanks! We\'ll be in touch soon.');
 }
 
+// Show notification toast
+function showNotification(message) {
+    const notification = document.getElementById('notification');
+    const messageElement = document.getElementById('notification-message');
+
+    if (notification && messageElement) {
+        messageElement.textContent = message;
+        notification.classList.add('show');
+
+        // Auto-hide after 4 seconds
+        setTimeout(() => {
+            notification.classList.remove('show');
+        }, 4000);
+    }
+}
+
 // Newsletter form validation
 function validateNewsletterForm() {
     const firstName = document.getElementById('firstName').value.trim();
     const lastName = document.getElementById('lastName').value.trim();
     const email = document.getElementById('email').value.trim();
     const organization = document.getElementById('organization').value.trim();
-    
+
     // Check if all fields are filled
     if (!firstName || !lastName || !email || !organization) {
-        alert('Please fill in all fields to get the PDF.');
+        showNotification('Please fill in all fields to get the PDF.');
         return false;
     }
-    
+
     // Basic email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-        alert('Please enter a valid email address.');
+        showNotification('Please enter a valid email address.');
         return false;
     }
-    
+
     // If validation passes
-    alert('Thanks! We\'ll email the checklist to ' + email);
+    showNotification('Thanks! We\'ll email the checklist to ' + email);
+    return true;
+}
+
+// Callback form validation
+function validateCallbackForm() {
+    const subject = document.getElementById('callbackSubject').value.trim();
+    const contact = document.getElementById('callbackContact').value.trim();
+
+    // Check if all fields are filled
+    if (!subject || !contact) {
+        showNotification('Please fill in all fields to request a callback.');
+        return false;
+    }
+
+    // If validation passes
+    showNotification('Thanks! We\'ll reach out shortly.');
+
+    // Clear the form
+    document.getElementById('callbackSubject').value = '';
+    document.getElementById('callbackContact').value = '';
+
     return true;
 }
 
