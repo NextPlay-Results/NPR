@@ -149,6 +149,18 @@ function validateCallbackForm() {
         return false;
     }
 
+    // Validate contact is either email or phone
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^[\d\s\-\(\)\+\.]+$/; // Allows digits, spaces, dashes, parentheses, plus sign, dots
+
+    const isEmail = emailRegex.test(contact);
+    const isPhone = phoneRegex.test(contact) && contact.replace(/\D/g, '').length >= 10; // At least 10 digits
+
+    if (!isEmail && !isPhone) {
+        showNotification('Please enter a valid email address or phone number.');
+        return false;
+    }
+
     // If validation passes
     showNotification('Thanks! We\'ll reach out shortly.');
 
