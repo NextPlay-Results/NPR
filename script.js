@@ -151,9 +151,10 @@ function validateConsultationForm() {
     const name = document.getElementById('consultName').value.trim();
     const email = document.getElementById('consultEmail').value.trim();
     const phone = document.getElementById('consultPhone').value.trim();
+    const dateTime = document.getElementById('consultDateTime').value;
 
     // Check if required fields are filled
-    if (!name || !email || !phone) {
+    if (!name || !email || !phone || !dateTime) {
         showNotification('Please fill in all required fields.');
         return false;
     }
@@ -169,6 +170,14 @@ function validateConsultationForm() {
     const phoneRegex = /^[\d\s\-\(\)\+\.]+$/;
     if (!phoneRegex.test(phone) || phone.replace(/\D/g, '').length < 10) {
         showNotification('Please enter a valid phone number.');
+        return false;
+    }
+
+    // Validate that selected date/time is not in the past
+    const selectedDate = new Date(dateTime);
+    const now = new Date();
+    if (selectedDate < now) {
+        showNotification('Please select a date and time in the future.');
         return false;
     }
 
@@ -234,7 +243,21 @@ document.addEventListener('DOMContentLoaded', function() {
         updateRotatingText();
         setInterval(updateRotatingText, 2200);
     }
-    
+
+    // Set minimum date/time for consultation datetime picker to current date/time
+    const consultDateTime = document.getElementById('consultDateTime');
+    if (consultDateTime) {
+        const now = new Date();
+        // Format: YYYY-MM-DDTHH:MM (required for datetime-local input)
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const minDateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
+        consultDateTime.setAttribute('min', minDateTime);
+    }
+
     // Add modal event listeners
     const modal = document.getElementById('modal');
     if (modal) {
