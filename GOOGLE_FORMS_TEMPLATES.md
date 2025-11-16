@@ -22,16 +22,17 @@ Follow these instructions to quickly create both forms. Just copy and paste!
 - Question: `Email`
 - Type: Short answer
 - Click "⋮" menu → "Response validation"
-  - Select: Text → Contains → `@`
+  - Select: Text → Email
 - Toggle: **Required** ✓
 
 **Question 3:**
 - Question: `Phone`
 - Type: Short answer
 - Click "⋮" menu → "Response validation"
-  - Select: Text → Matches pattern → `\d{10}`
-  - Custom error text: `Please enter a 10-digit phone number`
+  - Select: Regular expression → Matches → `^\d{10}$|^\(\d{3}\)\s?\d{3}-\d{4}$|^\d{3}-\d{3}-\d{4}$`
+  - Custom error text: `Please enter a valid 10-digit phone number`
 - Toggle: **Required** ✓
+- Note: If "Regular expression" option isn't available, you can skip phone validation here since the website already validates it
 
 **Question 4:**
 - Question: `Preferred Date and Time`
@@ -73,16 +74,17 @@ Follow these instructions to quickly create both forms. Just copy and paste!
 - Question: `Email`
 - Type: Short answer
 - Click "⋮" menu → "Response validation"
-  - Select: Text → Contains → `@`
+  - Select: Text → Email
 - Toggle: **Required** ✓
 
 **Question 3:**
 - Question: `Phone`
 - Type: Short answer
 - Click "⋮" menu → "Response validation"
-  - Select: Text → Matches pattern → `\d{10}`
-  - Custom error text: `Please enter a 10-digit phone number`
+  - Select: Regular expression → Matches → `^\d{10}$|^\(\d{3}\)\s?\d{3}-\d{4}$|^\d{3}-\d{3}-\d{4}$`
+  - Custom error text: `Please enter a valid 10-digit phone number`
 - Toggle: **Required** ✓
+- Note: If "Regular expression" option isn't available, you can skip phone validation here since the website already validates it
 
 **Question 4:**
 - Question: `Service Type`
