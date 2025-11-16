@@ -409,7 +409,7 @@
                     <form id="consultation-form">
                         <input type="text" placeholder="Name" class="form-input full-width" id="consultName" required>
                         <input type="email" placeholder="Email" class="form-input full-width" id="consultEmail" required>
-                        <input type="text" placeholder="Phone" class="form-input full-width" id="consultPhone" required>
+                        <input type="tel" placeholder="Phone (e.g., 555-123-4567)" class="form-input full-width" id="consultPhone" pattern="[0-9\-\(\)\s\+]+" maxlength="14" required>
                         <input type="datetime-local" class="form-input full-width" id="consultDateTime" required>
                         <textarea placeholder="Brief message about your needs" class="form-input full-width" id="consultMessage" rows="3"></textarea>
                         <button type="button" onclick="validateConsultationForm()" class="btn btn-primary full-width">Request Consultation</button>
@@ -420,7 +420,7 @@
                     <form id="service-form">
                         <input type="text" placeholder="Name" class="form-input full-width" id="serviceName" required>
                         <input type="email" placeholder="Email" class="form-input full-width" id="serviceEmail" required>
-                        <input type="text" placeholder="Phone" class="form-input full-width" id="servicePhone" required>
+                        <input type="tel" placeholder="Phone (e.g., 555-123-4567)" class="form-input full-width" id="servicePhone" pattern="[0-9\-\(\)\s\+]+" maxlength="14" required>
                         <select class="form-input full-width" id="serviceType" required>
                             <option value="">Select service type</option>
                             <option value="demand">Demand Letter</option>
