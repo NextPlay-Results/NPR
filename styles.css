@@ -648,14 +648,6 @@ body {
     }
 }
 
-@media (min-width: 1400px) {
-    .services-grid {
-        grid-template-columns: repeat(4, 1fr);
-        max-width: 1600px;
-        margin: 0 auto;
-    }
-}
-
 .service-card {
     border-radius: 16px;
     border: 1px solid #e2e8f0;
