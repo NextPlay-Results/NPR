@@ -60,18 +60,26 @@ function getSampleContent(type) {
 — Liability: Negligence per se + citations
 — Damages: Medical bills, wage loss, pain & suffering
 — Demand: Settlement figure with deadline`,
-        
+
         medchron: `MedChron Snippet
 01/12/2025 · Dr. Patel (Orthopedics) — DX: C5‑6 herniation; RX: PT 3x/week
 02/04/2025 · MRI Cervical Spine — C5‑6 protrusion 2.8mm
 02/18/2025 · PT Progress — Pain ↓ from 8/10 to 5/10`,
-        
+
         notebook: `NotebookLM Enablement
 • Source map: records, pleadings, photos
 • Prompts: chronology, causation, missing‑docs
-• QA checklist: citations present, no hallucinations`
+• QA checklist: citations present, no hallucinations`,
+
+        lemonlaw: `Lemon Law Claim Sample
+Vehicle: 2024 Toyota Camry, VIN: 1HGBH41JXMN109186
+— Defect: Persistent transmission slipping (substantial impairment)
+— Repair Attempts: 4 attempts at authorized dealer (dates documented)
+— Statute: [State] Lemon Law § 1793.2(d) - exceeds reasonable repair attempts
+— Manufacturer Notice: Certified letter sent [date] per statutory requirements
+— Demand: Full refund or replacement under buyback provisions`
     };
-    
+
     return samples[type] || 'Sample content not available.';
 }
 

@@ -196,7 +196,7 @@
         <div class="container">
             <div class="section-header">
                 <div class="section-eyebrow">What We Do</div>
-                <h2 class="section-title">Three Service Pillars</h2>
+                <h2 class="section-title">Four Service Pillars</h2>
                 <p class="section-subtitle">Independent brand. Same clarity and rigor.</p>
             </div>
             <div class="services-grid">
@@ -252,6 +252,24 @@
                     <div class="service-buttons">
                         <button onclick="scrollToId('request')" class="btn btn-primary">Request Service</button>
                         <button onclick="openModal('Legal AI Coaching · Sample', getSampleContent('notebook'))" class="btn btn-outline">See a Sample</button>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-header">
+                        <span class="service-icon">🚗</span>
+                        <h3 class="service-title">Lemon Law Claims</h3>
+                    </div>
+                    <div class="service-badge">Consumer Protection Expert</div>
+                    <p class="service-desc">I've handled lemon law claims across multiple states and know exactly what manufacturers look for when they evaluate buyback requests. You'll get documentation that builds an airtight case for defect patterns, proper repair attempt tracking, and state-specific statutory requirements that hold up under scrutiny.</p>
+                    <ul class="service-points">
+                        <li><span class="check">✓</span> State-specific lemon law compliance and statute citations</li>
+                        <li><span class="check">✓</span> Repair attempt documentation and timeline analysis</li>
+                        <li><span class="check">✓</span> Manufacturer notification letters with proper legal language</li>
+                        <li><span class="check">✓</span> Defect pattern tracking and substantial impairment evidence</li>
+                    </ul>
+                    <div class="service-buttons">
+                        <button onclick="scrollToId('request')" class="btn btn-primary">Request Service</button>
+                        <button onclick="openModal('Lemon Law Claims · Sample', getSampleContent('lemonlaw'))" class="btn btn-outline">See a Sample</button>
                     </div>
                 </div>
             </div>
@@ -409,6 +427,7 @@
                             <option value="">Select service type</option>
                             <option value="demand">Demand Letter</option>
                             <option value="medchron">Medical Chronology</option>
+                            <option value="lemonlaw">Lemon Law Claim</option>
                         </select>
                         <select class="form-input full-width" id="pageCount">
                             <option value="">Estimated page count</option>
