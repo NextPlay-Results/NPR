@@ -16,7 +16,7 @@ const phrases = [
     "1,000+ Demand Letters Written",
     "Trial-Ready Work Product",
     "All 50 States Covered",
-    "No AI, Just Experience"
+    "Real Experience, Real Results"
 ];
 
 let currentPhraseIndex = 0;
@@ -60,18 +60,26 @@ function getSampleContent(type) {
 — Liability: Negligence per se + citations
 — Damages: Medical bills, wage loss, pain & suffering
 — Demand: Settlement figure with deadline`,
-        
+
         medchron: `MedChron Snippet
 01/12/2025 · Dr. Patel (Orthopedics) — DX: C5‑6 herniation; RX: PT 3x/week
 02/04/2025 · MRI Cervical Spine — C5‑6 protrusion 2.8mm
 02/18/2025 · PT Progress — Pain ↓ from 8/10 to 5/10`,
-        
+
         notebook: `NotebookLM Enablement
 • Source map: records, pleadings, photos
 • Prompts: chronology, causation, missing‑docs
-• QA checklist: citations present, no hallucinations`
+• QA checklist: citations present, no hallucinations`,
+
+        lemonlaw: `Lemon Law Claim Sample
+Vehicle: 2024 Toyota Camry, VIN: 1HGBH41JXMN109186
+— Defect: Persistent transmission slipping (substantial impairment)
+— Repair Attempts: 4 attempts at authorized dealer (dates documented)
+— Statute: [State] Lemon Law § 1793.2(d) - exceeds reasonable repair attempts
+— Manufacturer Notice: Certified letter sent [date] per statutory requirements
+— Demand: Full refund or replacement under buyback provisions`
     };
-    
+
     return samples[type] || 'Sample content not available.';
 }
 
@@ -138,35 +146,83 @@ function validateNewsletterForm() {
     return true;
 }
 
-// Callback form validation
-function validateCallbackForm() {
-    const subject = document.getElementById('callbackSubject').value.trim();
-    const contact = document.getElementById('callbackContact').value.trim();
+// Consultation form validation
+function validateConsultationForm() {
+    const name = document.getElementById('consultName').value.trim();
+    const email = document.getElementById('consultEmail').value.trim();
+    const phone = document.getElementById('consultPhone').value.trim();
 
-    // Check if all fields are filled
-    if (!subject || !contact) {
-        showNotification('Please fill in all fields to request a callback.');
+    // Check if required fields are filled
+    if (!name || !email || !phone) {
+        showNotification('Please fill in all required fields.');
         return false;
     }
 
-    // Validate contact is either email or phone
+    // Basic email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const phoneRegex = /^[\d\s\-\(\)\+\.]+$/; // Allows digits, spaces, dashes, parentheses, plus sign, dots
+    if (!emailRegex.test(email)) {
+        showNotification('Please enter a valid email address.');
+        return false;
+    }
 
-    const isEmail = emailRegex.test(contact);
-    const isPhone = phoneRegex.test(contact) && contact.replace(/\D/g, '').length >= 10; // At least 10 digits
-
-    if (!isEmail && !isPhone) {
-        showNotification('Please enter a valid email address or phone number.');
+    // Phone validation
+    const phoneRegex = /^[\d\s\-\(\)\+\.]+$/;
+    if (!phoneRegex.test(phone) || phone.replace(/\D/g, '').length < 10) {
+        showNotification('Please enter a valid phone number.');
         return false;
     }
 
     // If validation passes
-    showNotification('Thanks! We\'ll reach out shortly.');
+    showNotification('Thanks! We\'ll reach out to schedule your consultation.');
 
     // Clear the form
-    document.getElementById('callbackSubject').value = '';
-    document.getElementById('callbackContact').value = '';
+    document.getElementById('consultName').value = '';
+    document.getElementById('consultEmail').value = '';
+    document.getElementById('consultPhone').value = '';
+    document.getElementById('consultDateTime').value = '';
+    document.getElementById('consultMessage').value = '';
+
+    return true;
+}
+
+// Service request form validation
+function validateServiceForm() {
+    const name = document.getElementById('serviceName').value.trim();
+    const email = document.getElementById('serviceEmail').value.trim();
+    const phone = document.getElementById('servicePhone').value.trim();
+    const serviceType = document.getElementById('serviceType').value;
+
+    // Check if required fields are filled
+    if (!name || !email || !phone || !serviceType) {
+        showNotification('Please fill in all required fields.');
+        return false;
+    }
+
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        showNotification('Please enter a valid email address.');
+        return false;
+    }
+
+    // Phone validation
+    const phoneRegex = /^[\d\s\-\(\)\+\.]+$/;
+    if (!phoneRegex.test(phone) || phone.replace(/\D/g, '').length < 10) {
+        showNotification('Please enter a valid phone number.');
+        return false;
+    }
+
+    // If validation passes
+    showNotification('Thanks! We\'ll review your request and get back to you shortly.');
+
+    // Clear the form
+    document.getElementById('serviceName').value = '';
+    document.getElementById('serviceEmail').value = '';
+    document.getElementById('servicePhone').value = '';
+    document.getElementById('serviceType').value = '';
+    document.getElementById('pageCount').value = '';
+    document.getElementById('deadline').value = '';
+    document.getElementById('caseDescription').value = '';
 
     return true;
 }
