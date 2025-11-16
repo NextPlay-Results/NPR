@@ -6,27 +6,25 @@
 
 const GOOGLE_FORMS_CONFIG = {
     consultation: {
-        // Replace FORM_ID with your actual consultation form ID
-        formUrl: 'https://docs.google.com/forms/d/e/YOUR_CONSULTATION_FORM_ID/formResponse',
+        formUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSf1ykJDj9f7vbl2aWPWuBrNKTO-hLPZVMchWvokIrG42BMkYw/formResponse',
         fields: {
-            name: 'entry.XXXXXXXXX',      // Replace with actual entry ID
-            email: 'entry.XXXXXXXXX',     // Replace with actual entry ID
-            phone: 'entry.XXXXXXXXX',     // Replace with actual entry ID
-            dateTime: 'entry.XXXXXXXXX',  // Replace with actual entry ID
-            message: 'entry.XXXXXXXXX'    // Replace with actual entry ID
+            name: 'entry.1729524969',
+            email: 'entry.1562858652',
+            phone: 'entry.670039400',
+            dateTime: 'entry.1101501399',
+            message: 'entry.364515731'
         }
     },
     service: {
-        // Replace FORM_ID with your actual service request form ID
-        formUrl: 'https://docs.google.com/forms/d/e/YOUR_SERVICE_FORM_ID/formResponse',
+        formUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfYRkoMLCJ3DQ7X5NcKCQHjzy6yU6l6rGiN7hBdySxDIURGZQ/formResponse',
         fields: {
-            name: 'entry.XXXXXXXXX',          // Replace with actual entry ID
-            email: 'entry.XXXXXXXXX',         // Replace with actual entry ID
-            phone: 'entry.XXXXXXXXX',         // Replace with actual entry ID
-            serviceType: 'entry.XXXXXXXXX',   // Replace with actual entry ID
-            pageCount: 'entry.XXXXXXXXX',     // Replace with actual entry ID
-            deadline: 'entry.XXXXXXXXX',      // Replace with actual entry ID
-            caseDescription: 'entry.XXXXXXXXX' // Replace with actual entry ID
+            name: 'entry.2106455092',
+            email: 'entry.1567379472',
+            phone: 'entry.425062397',
+            serviceType: 'entry.528328292',
+            pageCount: 'entry.1816790234',
+            deadline: 'entry.1948630069',
+            caseDescription: 'entry.305059186'
         }
     }
 };
