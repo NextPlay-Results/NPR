@@ -21,10 +21,10 @@ const GOOGLE_FORMS_CONFIG = {
             name: 'entry.2106455092',
             email: 'entry.1567379472',
             phone: 'entry.425062397',
-            serviceType: 'entry.528328292',
-            pageCount: 'entry.1816790234',
-            deadline: 'entry.1948630069',
-            caseDescription: 'entry.305059186'
+            serviceType: 'entry.1948630069',      // Fixed: was entry.528328292
+            pageCount: 'entry.305059186',         // Fixed: was entry.1816790234
+            deadline: 'entry.528328292',          // Fixed: was entry.1948630069
+            caseDescription: 'entry.1816790234'   // Fixed: was entry.305059186
         }
     }
 };
