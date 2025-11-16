@@ -256,6 +256,16 @@ document.addEventListener('DOMContentLoaded', function() {
         const minutes = String(now.getMinutes()).padStart(2, '0');
         const minDateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
         consultDateTime.setAttribute('min', minDateTime);
+
+        // Auto-open calendar picker when field is clicked
+        consultDateTime.addEventListener('click', function() {
+            try {
+                this.showPicker();
+            } catch (error) {
+                // showPicker() not supported in some browsers, fallback to default behavior
+                console.log('Picker auto-open not supported');
+            }
+        });
     }
 
     // Add modal event listeners
