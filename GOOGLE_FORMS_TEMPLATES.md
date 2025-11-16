@@ -47,12 +47,16 @@ Follow these instructions to quickly create both forms. Just copy and paste!
 - Toggle: **Not Required**
 
 ### Step 3: Configure Settings
-1. Click the gear icon (⚙️) at the top
-2. Under "General":
-   - Uncheck "Limit to 1 response"
-3. Under "Presentation":
-   - Confirmation message: `Thank you! We'll reach out shortly to schedule your consultation.`
-4. Click "Save"
+1. Click the **gear icon (⚙️)** at the top right of the form
+2. A "Settings" dialog will open with multiple tabs
+3. Click the **"General"** tab:
+   - Make sure "Collect email addresses" is **unchecked** (we collect it in the form)
+   - Make sure "Limit to 1 response" is **unchecked** (allow multiple submissions)
+4. Click the **"Presentation"** tab:
+   - Find "Confirmation message"
+   - Replace the default text with: `Thank you! We'll reach out shortly to schedule your consultation.`
+   - You can also check "Show link to submit another response" if you want
+5. Click **"Save"** at the bottom
 
 ---
 
@@ -119,12 +123,16 @@ Follow these instructions to quickly create both forms. Just copy and paste!
 - Toggle: **Not Required**
 
 ### Step 3: Configure Settings
-1. Click the gear icon (⚙️) at the top
-2. Under "General":
-   - Uncheck "Limit to 1 response"
-3. Under "Presentation":
-   - Confirmation message: `Thank you! We'll review your request and get back to you shortly.`
-4. Click "Save"
+1. Click the **gear icon (⚙️)** at the top right of the form
+2. A "Settings" dialog will open with multiple tabs
+3. Click the **"General"** tab:
+   - Make sure "Collect email addresses" is **unchecked** (we collect it in the form)
+   - Make sure "Limit to 1 response" is **unchecked** (allow multiple submissions)
+4. Click the **"Presentation"** tab:
+   - Find "Confirmation message"
+   - Replace the default text with: `Thank you! We'll review your request and get back to you shortly.`
+   - You can also check "Show link to submit another response" if you want
+5. Click **"Save"** at the bottom
 
 ---
 
