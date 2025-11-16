@@ -638,7 +638,8 @@ body {
 /* Services */
 .services-grid {
     display: grid;
-    gap: 24px;
+    gap: 32px;
+    grid-template-columns: 1fr;
 }
 
 @media (min-width: 768px) {
@@ -647,9 +648,11 @@ body {
     }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1400px) {
     .services-grid {
         grid-template-columns: repeat(4, 1fr);
+        max-width: 1600px;
+        margin: 0 auto;
     }
 }
 
