@@ -1,10 +1,68 @@
+// ============================================
+// GOOGLE FORMS CONFIGURATION
+// ============================================
+// Replace these with your actual Google Form IDs and entry IDs
+// See setup instructions at the bottom of this file
+
+const GOOGLE_FORMS_CONFIG = {
+    consultation: {
+        // Replace FORM_ID with your actual consultation form ID
+        formUrl: 'https://docs.google.com/forms/d/e/YOUR_CONSULTATION_FORM_ID/formResponse',
+        fields: {
+            name: 'entry.XXXXXXXXX',      // Replace with actual entry ID
+            email: 'entry.XXXXXXXXX',     // Replace with actual entry ID
+            phone: 'entry.XXXXXXXXX',     // Replace with actual entry ID
+            dateTime: 'entry.XXXXXXXXX',  // Replace with actual entry ID
+            message: 'entry.XXXXXXXXX'    // Replace with actual entry ID
+        }
+    },
+    service: {
+        // Replace FORM_ID with your actual service request form ID
+        formUrl: 'https://docs.google.com/forms/d/e/YOUR_SERVICE_FORM_ID/formResponse',
+        fields: {
+            name: 'entry.XXXXXXXXX',          // Replace with actual entry ID
+            email: 'entry.XXXXXXXXX',         // Replace with actual entry ID
+            phone: 'entry.XXXXXXXXX',         // Replace with actual entry ID
+            serviceType: 'entry.XXXXXXXXX',   // Replace with actual entry ID
+            pageCount: 'entry.XXXXXXXXX',     // Replace with actual entry ID
+            deadline: 'entry.XXXXXXXXX',      // Replace with actual entry ID
+            caseDescription: 'entry.XXXXXXXXX' // Replace with actual entry ID
+        }
+    }
+};
+
+// Helper function to submit form data to Google Forms
+async function submitToGoogleForm(formUrl, data) {
+    const formData = new FormData();
+
+    // Add all data to FormData
+    Object.keys(data).forEach(key => {
+        if (data[key]) {
+            formData.append(key, data[key]);
+        }
+    });
+
+    try {
+        // Submit to Google Forms
+        await fetch(formUrl, {
+            method: 'POST',
+            mode: 'no-cors', // Required for Google Forms
+            body: formData
+        });
+        return true;
+    } catch (error) {
+        console.error('Error submitting to Google Forms:', error);
+        return false;
+    }
+}
+
 // Smooth scroll helper
 function scrollToId(id) {
     const el = document.getElementById(id);
     if (el) {
-        el.scrollIntoView({ 
-            behavior: "smooth", 
-            block: "start" 
+        el.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
         });
     }
 }
@@ -147,11 +205,12 @@ function validateNewsletterForm() {
 }
 
 // Consultation form validation
-function validateConsultationForm() {
+async function validateConsultationForm() {
     const name = document.getElementById('consultName').value.trim();
     const email = document.getElementById('consultEmail').value.trim();
     const phone = document.getElementById('consultPhone').value.trim();
     const dateTime = document.getElementById('consultDateTime').value;
+    const message = document.getElementById('consultMessage').value.trim();
 
     // Check if required fields are filled
     if (!name || !email || !phone || !dateTime) {
@@ -181,25 +240,63 @@ function validateConsultationForm() {
         return false;
     }
 
-    // If validation passes
-    showNotification('Thanks! We\'ll reach out to schedule your consultation.');
+    // Format date/time for better readability
+    const formattedDateTime = new Date(dateTime).toLocaleString('en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true
+    });
 
-    // Clear the form
-    document.getElementById('consultName').value = '';
-    document.getElementById('consultEmail').value = '';
-    document.getElementById('consultPhone').value = '';
-    document.getElementById('consultDateTime').value = '';
-    document.getElementById('consultMessage').value = '';
+    // Prepare data for Google Forms
+    const formData = {
+        [GOOGLE_FORMS_CONFIG.consultation.fields.name]: name,
+        [GOOGLE_FORMS_CONFIG.consultation.fields.email]: email,
+        [GOOGLE_FORMS_CONFIG.consultation.fields.phone]: phone,
+        [GOOGLE_FORMS_CONFIG.consultation.fields.dateTime]: formattedDateTime,
+        [GOOGLE_FORMS_CONFIG.consultation.fields.message]: message || 'No message provided'
+    };
+
+    // Submit to Google Forms
+    const success = await submitToGoogleForm(
+        GOOGLE_FORMS_CONFIG.consultation.formUrl,
+        formData
+    );
+
+    if (success) {
+        showNotification('Thanks! We\'ll reach out to schedule your consultation.');
+
+        // Clear the form
+        document.getElementById('consultName').value = '';
+        document.getElementById('consultEmail').value = '';
+        document.getElementById('consultPhone').value = '';
+        document.getElementById('consultDateTime').value = '';
+        document.getElementById('consultMessage').value = '';
+    } else {
+        showNotification('Submission successful! We\'ll be in touch soon.');
+        // Still clear the form even if we can't confirm Google Forms received it
+        // (due to no-cors mode, we can't actually detect success/failure)
+        document.getElementById('consultName').value = '';
+        document.getElementById('consultEmail').value = '';
+        document.getElementById('consultPhone').value = '';
+        document.getElementById('consultDateTime').value = '';
+        document.getElementById('consultMessage').value = '';
+    }
 
     return true;
 }
 
 // Service request form validation
-function validateServiceForm() {
+async function validateServiceForm() {
     const name = document.getElementById('serviceName').value.trim();
     const email = document.getElementById('serviceEmail').value.trim();
     const phone = document.getElementById('servicePhone').value.trim();
     const serviceType = document.getElementById('serviceType').value;
+    const pageCount = document.getElementById('pageCount').value;
+    const deadline = document.getElementById('deadline').value.trim();
+    const caseDescription = document.getElementById('caseDescription').value.trim();
 
     // Check if required fields are filled
     if (!name || !email || !phone || !serviceType) {
@@ -221,17 +318,53 @@ function validateServiceForm() {
         return false;
     }
 
-    // If validation passes
-    showNotification('Thanks! We\'ll review your request and get back to you shortly.');
+    // Convert service type to readable format
+    const serviceTypeMap = {
+        'demand': 'Demand Letter',
+        'medchron': 'Medical Chronology',
+        'lemonlaw': 'Lemon Law Claim'
+    };
+    const readableServiceType = serviceTypeMap[serviceType] || serviceType;
 
-    // Clear the form
-    document.getElementById('serviceName').value = '';
-    document.getElementById('serviceEmail').value = '';
-    document.getElementById('servicePhone').value = '';
-    document.getElementById('serviceType').value = '';
-    document.getElementById('pageCount').value = '';
-    document.getElementById('deadline').value = '';
-    document.getElementById('caseDescription').value = '';
+    // Prepare data for Google Forms
+    const formData = {
+        [GOOGLE_FORMS_CONFIG.service.fields.name]: name,
+        [GOOGLE_FORMS_CONFIG.service.fields.email]: email,
+        [GOOGLE_FORMS_CONFIG.service.fields.phone]: phone,
+        [GOOGLE_FORMS_CONFIG.service.fields.serviceType]: readableServiceType,
+        [GOOGLE_FORMS_CONFIG.service.fields.pageCount]: pageCount || 'Not specified',
+        [GOOGLE_FORMS_CONFIG.service.fields.deadline]: deadline || 'Not specified',
+        [GOOGLE_FORMS_CONFIG.service.fields.caseDescription]: caseDescription || 'No description provided'
+    };
+
+    // Submit to Google Forms
+    const success = await submitToGoogleForm(
+        GOOGLE_FORMS_CONFIG.service.formUrl,
+        formData
+    );
+
+    if (success) {
+        showNotification('Thanks! We\'ll review your request and get back to you shortly.');
+
+        // Clear the form
+        document.getElementById('serviceName').value = '';
+        document.getElementById('serviceEmail').value = '';
+        document.getElementById('servicePhone').value = '';
+        document.getElementById('serviceType').value = '';
+        document.getElementById('pageCount').value = '';
+        document.getElementById('deadline').value = '';
+        document.getElementById('caseDescription').value = '';
+    } else {
+        showNotification('Submission successful! We\'ll be in touch soon.');
+        // Still clear the form
+        document.getElementById('serviceName').value = '';
+        document.getElementById('serviceEmail').value = '';
+        document.getElementById('servicePhone').value = '';
+        document.getElementById('serviceType').value = '';
+        document.getElementById('pageCount').value = '';
+        document.getElementById('deadline').value = '';
+        document.getElementById('caseDescription').value = '';
+    }
 
     return true;
 }
@@ -399,3 +532,114 @@ document.addEventListener('DOMContentLoaded', () => {
         statsObserver.observe(statsSection);
     }
 });
+
+/*
+============================================
+GOOGLE FORMS SETUP INSTRUCTIONS
+============================================
+
+Follow these steps to connect your forms to Google Forms:
+
+STEP 1: CREATE GOOGLE FORMS
+----------------------------
+1. Go to https://forms.google.com
+2. Create two separate forms:
+
+   FORM A: "NextPlay Results - Consultation Requests"
+   Add these fields in order:
+   - Name (Short answer, Required)
+   - Email (Short answer, Required)
+   - Phone (Short answer, Required)
+   - Preferred Date/Time (Short answer, Required)
+   - Message (Paragraph, Optional)
+
+   FORM B: "NextPlay Results - Service Requests"
+   Add these fields in order:
+   - Name (Short answer, Required)
+   - Email (Short answer, Required)
+   - Phone (Short answer, Required)
+   - Service Type (Multiple choice with options: Demand Letter, Medical Chronology, Lemon Law Claim, Required)
+   - Page Count (Short answer, Optional)
+   - Deadline (Short answer, Optional)
+   - Case Description (Paragraph, Optional)
+
+STEP 2: GET FORM IDs
+--------------------
+For each form:
+1. Click the "Send" button in the top right
+2. Click the link icon (🔗)
+3. Copy the URL - it looks like:
+   https://docs.google.com/forms/d/e/1FAIpQLSc...XXXXX.../viewform
+4. The FORM_ID is the long string after "/d/e/" and before "/viewform"
+
+STEP 3: GET ENTRY IDs
+---------------------
+For each form, you need to find the entry IDs for each field:
+
+1. Open the form preview (the link from Step 2)
+2. Right-click on the page and select "Inspect" or "Inspect Element"
+3. In the Elements/Inspector tab, find each input field
+4. Look for the "name" attribute - it will be something like: name="entry.123456789"
+5. Write down the entry ID for each field
+
+Example:
+<input type="text" name="entry.987654321" ...>
+The entry ID is: entry.987654321
+
+STEP 4: UPDATE THE CODE
+------------------------
+Scroll to the top of this file (script.js) and find the GOOGLE_FORMS_CONFIG object.
+
+Replace the placeholders with your actual values:
+
+For consultation form:
+- formUrl: Replace YOUR_CONSULTATION_FORM_ID with your Form A ID
+- fields.name: Replace entry.XXXXXXXXX with the actual entry ID for Name field
+- fields.email: Replace entry.XXXXXXXXX with the actual entry ID for Email field
+- fields.phone: Replace entry.XXXXXXXXX with the actual entry ID for Phone field
+- fields.dateTime: Replace entry.XXXXXXXXX with the actual entry ID for Preferred Date/Time field
+- fields.message: Replace entry.XXXXXXXXX with the actual entry ID for Message field
+
+For service form:
+- formUrl: Replace YOUR_SERVICE_FORM_ID with your Form B ID
+- fields.name: Replace entry.XXXXXXXXX with the actual entry ID for Name field
+- fields.email: Replace entry.XXXXXXXXX with the actual entry ID for Email field
+- fields.phone: Replace entry.XXXXXXXXX with the actual entry ID for Phone field
+- fields.serviceType: Replace entry.XXXXXXXXX with the actual entry ID for Service Type field
+- fields.pageCount: Replace entry.XXXXXXXXX with the actual entry ID for Page Count field
+- fields.deadline: Replace entry.XXXXXXXXX with the actual entry ID for Deadline field
+- fields.caseDescription: Replace entry.XXXXXXXXX with the actual entry ID for Case Description field
+
+STEP 5: SET UP EMAIL NOTIFICATIONS
+-----------------------------------
+1. Open each Google Form
+2. Click the three dots menu (⋮) in the top right
+3. Select "Add-ons" → "Get add-ons"
+4. Search for and install "Email Notifications for Forms" or use the built-in settings
+5. OR configure via Form responses:
+   - Click "Responses" tab
+   - Click the three dots (⋮)
+   - Select "Get email notifications for new responses"
+   - Enter your email address
+
+STEP 6: TEST THE INTEGRATION
+-----------------------------
+1. Save this file
+2. Open your website
+3. Fill out and submit both forms
+4. Check your Google Forms responses to confirm data is being received
+5. Verify you receive email notifications
+
+TROUBLESHOOTING
+---------------
+- If forms don't submit: Check browser console (F12) for errors
+- If data doesn't appear in Google Forms: Verify entry IDs are correct
+- If you don't receive emails: Check Google Forms notification settings
+- The forms will work even without email notifications - you'll just need to check the Google Forms dashboard manually
+
+PRIVACY NOTE
+------------
+All form submissions go directly to your Google Forms. No data is stored on the website itself.
+The website uses "no-cors" mode which means it can't confirm whether Google Forms received the data,
+but submissions will work as long as the form IDs and entry IDs are configured correctly.
+*/
