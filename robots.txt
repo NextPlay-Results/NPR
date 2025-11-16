@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://example.com/sitemap.xml
+Sitemap: https://nextplayresults.com/sitemap.xml
 
 # Crawl-delay for polite crawling (optional)
 Crawl-delay: 1
