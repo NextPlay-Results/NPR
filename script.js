@@ -16,7 +16,7 @@ const phrases = [
     "1,000+ Demand Letters Written",
     "Trial-Ready Work Product",
     "All 50 States Covered",
-    "No AI, Just Experience"
+    "Real Experience, Real Results"
 ];
 
 let currentPhraseIndex = 0;
