@@ -66,7 +66,7 @@ function getSampleContent(type) {
 02/04/2025 · MRI Cervical Spine — C5‑6 protrusion 2.8mm
 02/18/2025 · PT Progress — Pain ↓ from 8/10 to 5/10`,
 
-        notebook: `NotebookLM Enablement
+        notebook: `Legal AI Coaching Sample
 • Source map: records, pleadings, photos
 • Prompts: chronology, causation, missing‑docs
 • QA checklist: citations present, no hallucinations`,
