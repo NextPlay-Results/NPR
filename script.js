@@ -166,10 +166,10 @@ function validateConsultationForm() {
         return false;
     }
 
-    // Phone validation
-    const phoneRegex = /^[\d\s\-\(\)\+\.]+$/;
-    if (!phoneRegex.test(phone) || phone.replace(/\D/g, '').length < 10) {
-        showNotification('Please enter a valid phone number.');
+    // Phone validation - US phone numbers only (exactly 10 digits)
+    const phoneDigits = phone.replace(/\D/g, '');
+    if (phoneDigits.length !== 10) {
+        showNotification('Please enter a valid US phone number (10 digits).');
         return false;
     }
 
@@ -214,10 +214,10 @@ function validateServiceForm() {
         return false;
     }
 
-    // Phone validation
-    const phoneRegex = /^[\d\s\-\(\)\+\.]+$/;
-    if (!phoneRegex.test(phone) || phone.replace(/\D/g, '').length < 10) {
-        showNotification('Please enter a valid phone number.');
+    // Phone validation - US phone numbers only (exactly 10 digits)
+    const phoneDigits = phone.replace(/\D/g, '');
+    if (phoneDigits.length !== 10) {
+        showNotification('Please enter a valid US phone number (10 digits).');
         return false;
     }
 
