@@ -1051,6 +1051,19 @@ body {
     border-color: #0d9488;
 }
 
+textarea.form-input {
+    height: auto;
+    padding: 12px 16px;
+    resize: vertical;
+    min-height: 100px;
+}
+
+#consultation-form .btn,
+#service-form .btn {
+    margin-top: 4px;
+    margin-bottom: 0;
+}
+
 .form-note,
 .contact-note {
     font-size: 12px;
