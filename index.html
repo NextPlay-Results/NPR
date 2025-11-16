@@ -56,7 +56,7 @@
                 <nav class="nav">
                     <button onclick="scrollToId('services')" class="nav-link">Services</button>
                     <button onclick="scrollToId('impact')" class="nav-link">Impact</button>
-                    <button onclick="scrollToId('contact')" class="nav-link">Contact</button>
+                    <button onclick="scrollToId('request')" class="nav-link nav-link-cta">Request Service</button>
                 </nav>
             </div>
         </div>
@@ -91,8 +91,8 @@
                         <button onclick="scrollToId('services')" class="btn btn-primary">
                             Explore Services <span class="arrow">→</span>
                         </button>
-                        <button onclick="scrollToId('contact')" class="btn btn-outline">
-                            See How It Works
+                        <button onclick="scrollToId('request')" class="btn btn-outline">
+                            Request Service
                         </button>
                     </div>
                     <div class="trust-points">
@@ -214,7 +214,7 @@
                         <li><span class="check">✓</span> Written by a human who's negotiated for 20 years</li>
                     </ul>
                     <div class="service-buttons">
-                        <button onclick="scrollToId('contact')" class="btn btn-primary">Learn More</button>
+                        <button onclick="scrollToId('request')" class="btn btn-primary">Request Service</button>
                         <button onclick="openModal('Demand Letter Drafting · Sample', getSampleContent('demand'))" class="btn btn-outline">See a Sample</button>
                     </div>
                 </div>
@@ -232,7 +232,7 @@
                         <li><span class="check">✓</span> Missing records and timeline gaps called out upfront</li>
                     </ul>
                     <div class="service-buttons">
-                        <button onclick="scrollToId('contact')" class="btn btn-primary">Learn More</button>
+                        <button onclick="scrollToId('request')" class="btn btn-primary">Request Service</button>
                         <button onclick="openModal('Medical Chronology · Sample', getSampleContent('medchron'))" class="btn btn-outline">See a Sample</button>
                     </div>
                 </div>
@@ -250,7 +250,7 @@
                         <li><span class="check">✓</span> Quick training call so your team actually uses it</li>
                     </ul>
                     <div class="service-buttons">
-                        <button onclick="scrollToId('contact')" class="btn btn-primary">Learn More</button>
+                        <button onclick="scrollToId('request')" class="btn btn-primary">Request Service</button>
                         <button onclick="openModal('Legal AI Coaching · Sample', getSampleContent('notebook'))" class="btn btn-outline">See a Sample</button>
                     </div>
                 </div>
@@ -377,32 +377,50 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section bg-alt">
+    <!-- Request Services Section -->
+    <section id="request" class="section bg-alt">
         <div class="container">
             <div class="section-header">
-                <div class="section-eyebrow">Stay Connected</div>
-                <h2 class="section-title">Get the Legal Support Playbook</h2>
-                <p class="section-subtitle">Subscribe for a free checklist: 5 Mistakes Attorneys Make in Demand Letters - plus updates.</p>
+                <div class="section-eyebrow">Get Started</div>
+                <h2 class="section-title">Request Services</h2>
+                <p class="section-subtitle">Ready to get started? Choose how you'd like to work with us</p>
             </div>
             <div class="contact-grid">
                 <div class="newsletter-card">
-                    <form id="newsletter-form">
-                        <div class="form-grid">
-                            <input type="text" placeholder="First name" class="form-input" id="firstName" required>
-                            <input type="text" placeholder="Last name" class="form-input" id="lastName" required>
-                        </div>
-                        <input type="email" placeholder="Work email" class="form-input full-width" id="email" required>
-                        <input type="text" placeholder="Firm / Organization" class="form-input full-width" id="organization" required>
-                        <button type="button" onclick="validateNewsletterForm()" class="btn btn-primary full-width">Get the PDF</button>
-                        <p class="form-note">We'll occasionally send updates. Unsubscribe anytime.</p>
+                    <div class="card-icon">💬</div>
+                    <h3 class="contact-title">Schedule a Consultation</h3>
+                    <form id="consultation-form">
+                        <input type="text" placeholder="Name" class="form-input full-width" id="consultName" required>
+                        <input type="email" placeholder="Email" class="form-input full-width" id="consultEmail" required>
+                        <input type="text" placeholder="Phone" class="form-input full-width" id="consultPhone" required>
+                        <input type="text" placeholder="Preferred date/time" class="form-input full-width" id="consultDateTime">
+                        <textarea placeholder="Brief message about your needs" class="form-input full-width" id="consultMessage" rows="3"></textarea>
+                        <button type="button" onclick="validateConsultationForm()" class="btn btn-primary full-width">Request Consultation</button>
                     </form>
                 </div>
                 <div class="contact-card">
-                    <h3 class="contact-title">Talk to Our Team</h3>
-                    <input type="text" placeholder="Your message subject" class="form-input full-width" id="callbackSubject" required>
-                    <input type="text" placeholder="Best contact (email or phone)" class="form-input full-width" id="callbackContact" required>
-                    <button onclick="validateCallbackForm()" class="btn btn-outline full-width">Request a Callback</button>
+                    <div class="card-icon">📋</div>
+                    <h3 class="contact-title">Request Document Service</h3>
+                    <form id="service-form">
+                        <input type="text" placeholder="Name" class="form-input full-width" id="serviceName" required>
+                        <input type="email" placeholder="Email" class="form-input full-width" id="serviceEmail" required>
+                        <input type="text" placeholder="Phone" class="form-input full-width" id="servicePhone" required>
+                        <select class="form-input full-width" id="serviceType" required>
+                            <option value="">Select service type</option>
+                            <option value="demand">Demand Letter</option>
+                            <option value="medchron">Medical Chronology</option>
+                        </select>
+                        <select class="form-input full-width" id="pageCount">
+                            <option value="">Estimated page count</option>
+                            <option value="<250">Up to 250 pages</option>
+                            <option value="250-500">250-500 pages</option>
+                            <option value="500-1000">500-1,000 pages</option>
+                            <option value="1000+">1,000+ pages</option>
+                        </select>
+                        <input type="text" placeholder="Deadline (e.g., urgent, 1 week)" class="form-input full-width" id="deadline">
+                        <textarea placeholder="Brief case description" class="form-input full-width" id="caseDescription" rows="3"></textarea>
+                        <button type="button" onclick="validateServiceForm()" class="btn btn-primary full-width">Request Service</button>
+                    </form>
                 </div>
             </div>
         </div>

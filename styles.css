@@ -97,6 +97,19 @@ body {
     color: #0f172a;
 }
 
+.nav-link-cta {
+    background: #0b5ed7;
+    color: white !important;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.nav-link-cta:hover {
+    background: #0a4fb3;
+    color: white !important;
+}
+
 @media (min-width: 768px) {
     .nav {
         display: flex;
@@ -951,6 +964,12 @@ body {
     border-radius: 16px;
     border: 1px solid #e2e8f0;
     padding: 32px;
+}
+
+.card-icon {
+    font-size: 32px;
+    margin-bottom: 16px;
+    text-align: center;
 }
 
 .form-grid {
