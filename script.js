@@ -292,7 +292,12 @@ async function validateServiceForm() {
     const email = document.getElementById('serviceEmail').value.trim();
     const phone = document.getElementById('servicePhone').value.trim();
     const serviceType = document.getElementById('serviceType').value;
-    const pageCount = document.getElementById('pageCount').value;
+
+    // Get pageCount - use selected option text if available, skip placeholder
+    const pageCountSelect = document.getElementById('pageCount');
+    const pageCountText = pageCountSelect.options[pageCountSelect.selectedIndex]?.text || '';
+    const pageCount = (pageCountSelect.value && pageCountText !== 'Estimated page count') ? pageCountText : '';
+
     const deadline = document.getElementById('deadline').value.trim();
     const caseDescription = document.getElementById('caseDescription').value.trim();
 
@@ -334,6 +339,11 @@ async function validateServiceForm() {
         [GOOGLE_FORMS_CONFIG.service.fields.deadline]: deadline || 'Not specified',
         [GOOGLE_FORMS_CONFIG.service.fields.caseDescription]: caseDescription || 'No description provided'
     };
+
+    // Debug logging
+    console.log('Service form submission:', {
+        name, email, phone, serviceType: readableServiceType, pageCount, deadline, caseDescription
+    });
 
     // Submit to Google Forms
     const success = await submitToGoogleForm(
