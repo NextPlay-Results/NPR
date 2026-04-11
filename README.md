@@ -1,12 +1,12 @@
 # NextPlay Results - Legal Support Website
 
-A professional paralegal services website featuring demand letter drafting, medical chronology, legal AI coaching, and lemon law claims services.
+A professional legal services website featuring demand letter drafting, medical chronology, legal AI coaching, and lemon law claims services.
 
 ## Features
 
 - **Modern Design**: Clean, professional layout with responsive design
 - **Service Showcase**: Four main service pillars with interactive samples
-- **Expertise Showcase**: 20 years of paralegal experience and credentials
+- **Expertise Showcase**: 20 years of legal services experience and credentials
 - **Community Impact**: Youth sports donation tracking
 - **Contact Forms**: Newsletter signup and consultation requests
 
