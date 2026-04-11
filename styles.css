@@ -60,7 +60,7 @@ button { font: inherit; color: inherit; }
 
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 0 var(--s-5);
 }
@@ -70,31 +70,44 @@ button { font: inherit; color: inherit; }
    Eyebrow
    ============================================================ */
 .eyebrow {
-  font-family: var(--font-body);
-  font-size: var(--text-small);
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: var(--s-4);
-  display: inline-flex;
-  align-items: center;
-  gap: var(--s-3);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-4);
+  width: 100%;
+  padding: var(--s-4) 0 var(--s-4);
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  margin-bottom: var(--s-7);
 }
-.eyebrow::before {
-  content: "";
-  display: inline-block;
-  width: 24px;
-  height: 1px;
-  background: currentColor;
+.eyebrow::before { content: none; }
+.eyebrow-num {
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-style: italic;
+  color: var(--highlight);
+  font-weight: 500;
+  font-optical-sizing: auto;
+  font-variation-settings: "opsz" 144;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+.eyebrow-label {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink);
+  line-height: 1;
 }
 
 /* ============================================================
    Section header
    ============================================================ */
 .section-header {
-  max-width: 720px;
   margin-bottom: var(--s-8);
+  width: 100%;
 }
 .section-title {
   font-family: var(--font-display);
@@ -106,6 +119,7 @@ button { font: inherit; color: inherit; }
   margin-bottom: var(--s-5);
   font-optical-sizing: auto;
   font-variation-settings: "opsz" 144;
+  max-width: 20ch;
 }
 .section-lede {
   font-size: var(--text-body-l);
@@ -138,9 +152,7 @@ button { font: inherit; color: inherit; }
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(250, 247, 242, 0.88);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: var(--bg);
   border-bottom: 1px solid var(--hairline);
 }
 .header-inner {
@@ -148,7 +160,7 @@ button { font: inherit; color: inherit; }
   align-items: center;
   justify-content: space-between;
   padding: var(--s-4) var(--s-5);
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
 }
 @media (min-width: 768px) {
@@ -230,7 +242,7 @@ button { font: inherit; color: inherit; }
   justify-content: center;
   align-items: center;
   gap: var(--s-7);
-  z-index: 1000;
+  z-index: 9999;
   padding: var(--s-6);
 }
 .nav.mobile-open .nav-link {
@@ -326,6 +338,18 @@ button { font: inherit; color: inherit; }
   position: relative;
 }
 .hero-inner { max-width: 920px; }
+.hero .eyebrow {
+  display: block;
+  border: none;
+  padding: 0;
+  margin-bottom: var(--s-5);
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
 .hero-title {
   font-family: var(--font-display);
   font-size: var(--text-display-xl);
@@ -385,7 +409,7 @@ button { font: inherit; color: inherit; }
 }
 .resume-statement {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 6.2vw, 5.25rem);
+  font-size: clamp(2rem, 5.5vw, 4.75rem);
   font-weight: 400;
   line-height: 1.02;
   letter-spacing: -0.03em;
@@ -393,7 +417,7 @@ button { font: inherit; color: inherit; }
   margin: var(--s-6) 0 var(--s-7);
   font-optical-sizing: auto;
   font-variation-settings: "opsz" 144;
-  max-width: 16ch;
+  text-wrap: balance;
 }
 .resume-statement .line {
   display: block;
@@ -601,11 +625,13 @@ button { font: inherit; color: inherit; }
   background: var(--ink);
   color: var(--bg);
 }
-.discretion .eyebrow { color: var(--highlight); }
-.discretion .eyebrow::before { background: currentColor; }
+.discretion .eyebrow {
+  border-top-color: var(--highlight);
+  border-bottom-color: var(--highlight);
+}
+.discretion .eyebrow-label { color: var(--bg); }
 .discretion-inner {
   max-width: 920px;
-  margin: 0 auto;
 }
 .pull-quote {
   border-left: 3px solid var(--highlight);
@@ -637,7 +663,6 @@ button { font: inherit; color: inherit; }
 .impact { padding: var(--s-10) 0; }
 .impact-panel {
   max-width: 900px;
-  margin: 0 auto;
   padding: var(--s-8) 0 0;
   border-top: 2px solid var(--ink);
 }
@@ -770,7 +795,6 @@ button { font: inherit; color: inherit; }
 .request { padding: var(--s-10) 0; }
 .request-panel {
   max-width: 780px;
-  margin: 0 auto;
   background: var(--bg);
   border: 1px solid var(--hairline-strong);
   border-radius: var(--r-3);
@@ -1042,4 +1066,228 @@ select.form-input {
   body { background: white; color: black; }
   .service-feature-sample { page-break-inside: avoid; }
   .reveal { opacity: 1 !important; transform: none !important; }
+}
+
+
+/* ============================================================
+   Service feature — alternating layout for stacked articles
+   ============================================================ */
+.service-feature + .service-feature {
+  margin-top: 0;
+}
+.service-feature {
+  margin-bottom: 0;
+}
+.services .service-feature:last-of-type {
+  border-bottom: 2px solid var(--ink);
+}
+@media (min-width: 980px) {
+  .service-feature.reverse .service-feature-content { order: 2; }
+  .service-feature.reverse .service-feature-sample  { order: 1; }
+}
+
+@media (max-width: 767px) {
+  .eyebrow {
+    padding: var(--s-3) 0;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    margin-bottom: var(--s-6);
+  }
+  .eyebrow-num { font-size: 1.125rem; }
+  .eyebrow-label { font-size: 0.75rem; letter-spacing: 0.16em; }
+}
+
+
+/* ============================================================
+   Timeline sample (MedChron comprehensive treatment timeline)
+   ============================================================ */
+.timeline-heading {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  padding-bottom: var(--s-3);
+  border-bottom: 1px solid var(--hairline);
+  margin-bottom: var(--s-4) !important;
+}
+.timeline-date {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.125rem;
+  color: var(--ink);
+  font-weight: 600;
+  margin-top: var(--s-5) !important;
+  margin-bottom: var(--s-3) !important;
+  padding-bottom: var(--s-2);
+  border-bottom: 1px solid var(--hairline);
+  font-optical-sizing: auto;
+}
+.sample-body .timeline-date:first-of-type { margin-top: var(--s-3) !important; }
+.timeline-entry {
+  padding-left: var(--s-4);
+  border-left: 2px solid var(--highlight);
+  margin-bottom: var(--s-3);
+}
+.timeline-entry p {
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--ink);
+  margin-bottom: var(--s-2) !important;
+}
+.timeline-entry p strong {
+  color: var(--ink-muted);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: inline-block;
+  min-width: 110px;
+}
+.timeline-flag {
+  background: rgba(201, 169, 104, 0.14);
+  padding: var(--s-3) var(--s-4);
+  border-left: 3px solid var(--highlight-dim);
+  font-size: 0.8125rem !important;
+}
+.timeline-flag strong {
+  color: var(--highlight-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+}
+
+/* Long sample cards — allow internal scroll on desktop so the
+   feature stays balanced against the content column */
+@media (min-width: 980px) {
+  .service-feature-sample--long .sample-body {
+    max-height: 620px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--hairline-strong) transparent;
+    padding-right: var(--s-3);
+  }
+  .service-feature-sample--long .sample-body::-webkit-scrollbar {
+    width: 6px;
+  }
+  .service-feature-sample--long .sample-body::-webkit-scrollbar-thumb {
+    background: var(--hairline-strong);
+    border-radius: 3px;
+  }
+}
+
+
+/* ============================================================
+   Pricing section
+   ============================================================ */
+.pricing {
+  padding: var(--s-10) 0;
+}
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-7);
+  margin-bottom: var(--s-8);
+}
+@media (min-width: 900px) {
+  .pricing-grid { grid-template-columns: 1.35fr 1fr; gap: var(--s-9); }
+}
+.pricing-card {
+  padding-top: var(--s-6);
+  border-top: 2px solid var(--ink);
+}
+.pricing-card-head {
+  margin-bottom: var(--s-6);
+}
+.pricing-card-meta {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--ink-muted);
+  margin-top: var(--s-2);
+  font-optical-sizing: auto;
+}
+.pricing-card-index {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.375rem;
+  color: var(--highlight);
+  font-weight: 500;
+  font-optical-sizing: auto;
+  line-height: 1;
+}
+.pricing-card-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  font-optical-sizing: auto;
+  font-variation-settings: "opsz" 144;
+}
+.pricing-tiers {
+  display: flex;
+  flex-direction: column;
+}
+.pricing-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: var(--s-5);
+  align-items: baseline;
+  padding: var(--s-4) 0;
+  border-bottom: 1px solid var(--hairline);
+}
+.pricing-row:last-child { border-bottom: none; }
+.pricing-row--addon .pricing-price {
+  color: var(--highlight-dim);
+  font-size: 1.5rem;
+}
+.pricing-row--addon .pricing-scope {
+  color: var(--ink-muted);
+  font-style: italic;
+}
+.pricing-price {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3vw, 2.75rem);
+  font-weight: 500;
+  font-style: italic;
+  color: var(--ink);
+  font-feature-settings: "lnum", "tnum";
+  font-optical-sizing: auto;
+  line-height: 1;
+}
+.pricing-scope {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--ink);
+  line-height: 1.4;
+  font-weight: 500;
+}
+.pricing-notes {
+  border-top: 1px solid var(--hairline);
+  padding-top: var(--s-6);
+  max-width: 900px;
+}
+.pricing-notes p {
+  font-size: var(--text-body);
+  line-height: 1.6;
+  color: var(--ink-muted);
+  margin-bottom: var(--s-3);
+}
+.pricing-notes p:last-child { margin-bottom: 0; }
+.pricing-notes strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+.pricing-notes .btn-text {
+  display: inline;
+  vertical-align: baseline;
+}
+
+@media (max-width: 767px) {
+  .pricing-row { grid-template-columns: 110px 1fr; gap: var(--s-4); }
+  .pricing-price { font-size: 1.75rem; }
 }
