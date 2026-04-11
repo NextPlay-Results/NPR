@@ -651,3 +651,48 @@ All form submissions go directly to your Google Forms. No data is stored on the 
 The website uses "no-cors" mode which means it can't confirm whether Google Forms received the data,
 but submissions will work as long as the form IDs and entry IDs are configured correctly.
 */
+
+// ============================================================
+// Editorial Rebuild — additions
+// ============================================================
+
+// Tab switcher for the request section
+function switchRequestTab(panelId, tabBtn) {
+    // Update tab states
+    document.querySelectorAll('.request-tab').forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+    });
+    if (tabBtn) {
+        tabBtn.classList.add('active');
+        tabBtn.setAttribute('aria-selected', 'true');
+    }
+    // Update panel visibility
+    document.querySelectorAll('.request-tabpanel').forEach(p => {
+        p.hidden = true;
+        p.classList.remove('active');
+    });
+    const panel = document.getElementById(panelId);
+    if (panel) {
+        panel.hidden = false;
+        panel.classList.add('active');
+    }
+}
+
+// Scroll-triggered reveal for editorial sections
+document.addEventListener('DOMContentLoaded', function() {
+    const revealEls = document.querySelectorAll('.reveal');
+    if (!revealEls.length || !('IntersectionObserver' in window)) {
+        revealEls.forEach(el => el.classList.add('in-view'));
+        return;
+    }
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
+    revealEls.forEach(el => revealObserver.observe(el));
+});
