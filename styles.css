@@ -174,14 +174,21 @@ button { font: inherit; color: inherit; }
   color: var(--ink);
   text-decoration: none;
   display: inline-flex;
-  gap: var(--s-2);
+  gap: 0;
   align-items: baseline;
   font-optical-sizing: auto;
   transition: color var(--t-fast);
 }
-.wordmark-next { font-style: italic; font-weight: 500; }
-.wordmark-sep { color: var(--highlight); font-weight: 400; font-style: italic; }
-.wordmark-results { font-weight: 600; }
+.wordmark-next {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--ink);
+}
+.wordmark-sep { display: none; }
+.wordmark-results {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
 .wordmark:hover { color: var(--accent); }
 
 .mobile-menu-toggle {
