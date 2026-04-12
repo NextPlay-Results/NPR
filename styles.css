@@ -432,17 +432,42 @@ button { font: inherit; color: inherit; }
 }
 .resume-statement .stat-number,
 .resume-statement .resume-num {
-  color: var(--highlight);
-  font-weight: 500;
+  color: #7A5C00;
+  font-weight: 700;
   font-feature-settings: "lnum", "tnum";
   font-style: italic;
   margin-right: 0.1em;
 }
 .resume-statement .plus {
-  color: var(--highlight);
-  font-weight: 400;
-  font-style: italic;
-  margin-right: 0.1em;
+  display: inline-block;
+  width: 0.5em;
+  height: 0.5em;
+  position: relative;
+  vertical-align: 0.15em;
+  margin: 0 0.12em 0 0.04em;
+  color: transparent;
+  overflow: hidden;
+}
+.resume-statement .plus::before,
+.resume-statement .plus::after {
+  content: '';
+  position: absolute;
+  background: #7A5C00;
+  border-radius: 1px;
+}
+.resume-statement .plus::before {
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 15%;
+  transform: translateY(-50%);
+}
+.resume-statement .plus::after {
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 15%;
+  transform: translateX(-50%);
 }
 .resume-statement .label {
   font-style: normal;
@@ -697,8 +722,8 @@ button { font: inherit; color: inherit; }
   font-optical-sizing: auto;
   font-variation-settings: "opsz" 144;
 }
-.impact-raised .impact-amount { color: var(--highlight); font-style: italic; }
-.impact-goal .impact-amount { color: var(--ink); }
+.impact-raised .impact-amount { color: #7A5C00; font-style: italic; }
+.impact-goal .impact-amount { color: #7A5C00; }
 .impact-amount-label {
   font-family: var(--font-body);
   font-size: var(--text-small);
@@ -1195,18 +1220,19 @@ select.form-input {
 .pricing-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--s-7);
+  gap: var(--s-6);
   margin-bottom: var(--s-8);
 }
 @media (min-width: 900px) {
-  .pricing-grid { grid-template-columns: 1.35fr 1fr; gap: var(--s-9); }
+  .pricing-grid { grid-template-columns: 1fr 1fr; gap: var(--s-7); }
 }
 .pricing-card {
-  padding-top: var(--s-6);
-  border-top: 2px solid var(--ink);
+  background: var(--bg-alt);
+  padding: var(--s-7) var(--s-6);
+  border-radius: var(--r-3);
 }
 .pricing-card-head {
-  margin-bottom: var(--s-6);
+  margin-bottom: var(--s-5);
 }
 .pricing-card-meta {
   font-family: var(--font-display);
@@ -1227,8 +1253,8 @@ select.form-input {
 }
 .pricing-card-title {
   font-family: var(--font-display);
-  font-size: clamp(1.75rem, 3vw, 2.25rem);
-  font-weight: 500;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 600;
   line-height: 1.05;
   letter-spacing: -0.015em;
   color: var(--ink);
@@ -1240,43 +1266,44 @@ select.form-input {
   flex-direction: column;
 }
 .pricing-row {
-  display: grid;
-  grid-template-columns: 140px 1fr;
-  gap: var(--s-5);
+  display: flex;
+  justify-content: space-between;
   align-items: baseline;
   padding: var(--s-4) 0;
-  border-bottom: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline-strong);
 }
 .pricing-row:last-child { border-bottom: none; }
 .pricing-row--addon .pricing-price {
-  color: var(--highlight-dim);
-  font-size: 1.5rem;
+  color: #7A5C00;
+  font-size: 1.25rem;
+  font-weight: 500;
 }
 .pricing-row--addon .pricing-scope {
-  color: var(--ink-muted);
+  color: var(--ink-subtle);
   font-style: italic;
-}
-.pricing-price {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 3vw, 2.75rem);
-  font-weight: 500;
-  font-style: italic;
-  color: var(--ink);
-  font-feature-settings: "lnum", "tnum";
-  font-optical-sizing: auto;
-  line-height: 1;
+  font-size: var(--text-body-s);
 }
 .pricing-scope {
   font-family: var(--font-body);
   font-size: var(--text-body);
-  color: var(--ink);
+  color: var(--ink-muted);
   line-height: 1.4;
   font-weight: 500;
+}
+.pricing-price {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 600;
+  font-style: italic;
+  color: #7A5C00;
+  font-feature-settings: "lnum", "tnum";
+  font-optical-sizing: auto;
+  line-height: 1;
+  white-space: nowrap;
 }
 .pricing-notes {
   border-top: 1px solid var(--hairline);
   padding-top: var(--s-6);
-  max-width: 900px;
 }
 .pricing-notes p {
   font-size: var(--text-body);
@@ -1295,6 +1322,5 @@ select.form-input {
 }
 
 @media (max-width: 767px) {
-  .pricing-row { grid-template-columns: 110px 1fr; gap: var(--s-4); }
-  .pricing-price { font-size: 1.75rem; }
+  .pricing-price { font-size: 1.25rem; }
 }
