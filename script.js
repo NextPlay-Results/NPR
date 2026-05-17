@@ -29,6 +29,24 @@ const GOOGLE_FORMS_CONFIG = {
     }
 };
 
+// Pre-fill service type dropdown then scroll to the request section
+function requestService(type) {
+    const select = document.getElementById('serviceType');
+    if (select) {
+        const opt = Array.from(select.options).find(o => o.value === type);
+        if (opt) {
+            select.value = type;
+            select.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+    }
+    if (typeof scrollToId === 'function') {
+        scrollToId('request');
+    } else {
+        const el = document.getElementById('request');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
 // Helper function to submit form data to Google Forms
 async function submitToGoogleForm(formUrl, data) {
     const formData = new FormData();
@@ -126,6 +144,15 @@ function getSampleContent(type) {
 • Source map: records, pleadings, photos
 • Prompts: chronology, causation, missing‑docs
 • QA checklist: citations present, no hallucinations`,
+
+        tortclaim: `Tort Claim Notice Sample
+Claimant: [Name] · DOB [Redacted]
+Agency: [Public Entity] · Tort Claims Act § [cite]
+Service: Certified mail RRR · [Date]
+— Incident: [Date] · [Location] · duty/breach/causation/damages
+— Medical specials itemized to date
+— Wage loss with supporting records
+— General damages preserved for litigation`,
 
         lemonlaw: `Lemon Law Claim Sample
 Vehicle: 2024 Toyota Camry, VIN: 1HGBH41JXMN109186
