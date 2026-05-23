@@ -696,3 +696,42 @@ document.addEventListener('DOMContentLoaded', function() {
     }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
     revealEls.forEach(el => revealObserver.observe(el));
 });
+
+// Hero cursor-tracking gradient
+(function initHeroCursor() {
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let rafId = 0;
+    let pendingX = 50, pendingY = 30;
+    function apply() {
+        hero.style.setProperty('--hero-cursor-x', pendingX + '%');
+        hero.style.setProperty('--hero-cursor-y', pendingY + '%');
+        rafId = 0;
+    }
+    hero.addEventListener('pointermove', (e) => {
+        const rect = hero.getBoundingClientRect();
+        pendingX = ((e.clientX - rect.left) / rect.width) * 100;
+        pendingY = ((e.clientY - rect.top) / rect.height) * 100;
+        if (!rafId) rafId = requestAnimationFrame(apply);
+    }, { passive: true });
+})();
+
+// Hero scroll parallax — title and lede translate slower than scroll
+(function initHeroParallax() {
+    const title = document.querySelector('.hero-title');
+    const lede = document.querySelector('.hero-lede');
+    if (!title) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let rafId = 0;
+    function update() {
+        const y = window.scrollY;
+        if (y > 800) { rafId = 0; return; }
+        title.style.transform = 'translate3d(0,' + (y * -0.08).toFixed(1) + 'px,0)';
+        if (lede) lede.style.transform = 'translate3d(0,' + (y * -0.05).toFixed(1) + 'px,0)';
+        rafId = 0;
+    }
+    window.addEventListener('scroll', () => {
+        if (!rafId) rafId = requestAnimationFrame(update);
+    }, { passive: true });
+})();
