@@ -848,10 +848,6 @@ button { font: inherit; color: inherit; }
   color: #7A5C00;
   font-weight: 600;
 }
-.impact-pillar-share--pending,
-.impact-pillar-share--awareness {
-  color: var(--ink-muted);
-}
 .impact-pillar-title {
   font-family: var(--font-display);
   font-size: clamp(1.5rem, 2.5vw, 1.875rem);
