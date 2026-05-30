@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" width="220" height="220">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F8F4EE"/>
+      <stop offset="100%" stop-color="#E8DCC8"/>
+    </linearGradient>
+  </defs>
+  <rect width="220" height="220" fill="url(#g1)"/>
+  <rect x="0.5" y="0.5" width="219" height="219" fill="none" stroke="#111" stroke-opacity="0.08"/>
+  <text x="18" y="34" font-family="Inter Tight, sans-serif" font-size="11" font-weight="500" fill="#111" letter-spacing="2">01 / SERVICE</text>
+  <g transform="translate(20,68)" stroke="#111" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0 0 L48 0 L60 12 L60 64 L0 64 Z"/>
+    <path d="M48 0 L48 12 L60 12"/>
+    <line x1="10" y1="26" x2="50" y2="26"/>
+    <line x1="10" y1="36" x2="50" y2="36"/>
+    <line x1="10" y1="46" x2="40" y2="46"/>
+  </g>
+  <text x="18" y="172" font-family="Inter Tight, sans-serif" font-size="20" font-weight="700" fill="#111">Demand Letter</text>
+  <text x="18" y="196" font-family="Inter Tight, sans-serif" font-size="13" font-weight="400" fill="#111">Drafting</text>
+  <circle cx="196" cy="196" r="6" fill="#C0392B"/>
+</svg>
